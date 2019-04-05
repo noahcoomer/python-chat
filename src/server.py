@@ -3,6 +3,7 @@
 
 import socket
 import random
+import ssl
 from threading import Thread
 
 class Server(object):
@@ -135,7 +136,7 @@ class Server(object):
                 print("Removing connection with: ", addr)
                 self.clients[uid].close()
                 del self.clients[uid]
-                return 0
+                return 1
 
 
 if __name__ == '__main__':

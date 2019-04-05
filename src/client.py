@@ -3,6 +3,7 @@
 
 import socket
 import random
+import ssl
 from threading import Thread
 
 class Client(object):
@@ -27,7 +28,7 @@ class Client(object):
             if message == '.exit':
                 self.sock.sendall(message.encode())
                 self.sock.close()
-                return 0
+                return 1
             else:
                 self.sock.sendall(message.encode())
         
