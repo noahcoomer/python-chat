@@ -16,10 +16,10 @@ class Client(object):
         self.sock.connect((self.host, self.port))
         print("Successfully connected to server.")
 
-        send_thread = Thread(target=self.send_thread)
-        receive_thread = Thread(target=self.receive_thread)
-        send_thread.start()
-        receive_thread.start()
+        send = Thread(target=self.send_thread)
+        receive = Thread(target=self.receive_thread)
+        send.start()
+        receive.start()
         
 
     def send_thread(self):
@@ -28,7 +28,7 @@ class Client(object):
             if message == '.exit':
                 self.sock.sendall(message.encode())
                 self.sock.close()
-                return 1
+                return 0
             else:
                 self.sock.sendall(message.encode())
         
